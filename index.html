@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>ElmImPort</title>
+		<script src="main.js"></script>
+	</head>
+	<body>
+
+		<script>
+			var app = Elm.Main.fullscreen();
+
+			app.ports.getSize.subscribe(function(delayInSeconds) {
+				setTimeout(function() {
+					app.ports.gotSize.send({
+						width: document.body.clientWidth,
+						height: document.body.clientHeight
+					})
+				}, delayInSeconds * 1000)
+			})
+		</script>
+	</body>
+</html>
